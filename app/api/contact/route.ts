@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
         // Email content
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: 'ilnur_gumerov_1996@mail.ru',
+            to: process.env.EMAIL_TO,
             subject: `Новая заявка с сайта от ${name}`,
             text: `
             Вы получили новую заявку:

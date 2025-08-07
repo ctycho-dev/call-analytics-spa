@@ -98,23 +98,34 @@ export default function LandingPage() {
     return Object.keys(newErrors).length === 0
   }
 
-  // Отправка формы
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
+    if (!validateForm()) return;
 
-    if (!validateForm()) return
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Здесь должна быть логика отправки на backend
-    // Для демонстрации просто показываем сообщение об успехе
-    console.log("Отправка данных:", formData)
+      const data = await response.json();
 
-    setIsSubmitted(true)
-    setFormData({ name: "", company: "", phone: "", email: "" })
-    setIsConsentChecked(false) // Сброс чекбокса после отправки
-
-    // Скрыть сообщение через 5 секунд
-    setTimeout(() => setIsSubmitted(false), 5000)
-  }
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({ name: '', company: '', phone: '', email: '' });
+        setIsConsentChecked(false);
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        alert('Ошибка: ' + data.error);
+      }
+    } catch (error) {
+      console.error('Network error:', error);
+      alert('Не удалось отправить форму. Проверьте подключение.');
+    }
+  };
 
   // Анимация появления секций при скролле
   useEffect(() => {

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, Clock, TrendingUp, Users, BarChart3, FileText, Search, Target, AlertTriangle } from "lucide-react"
+import { CheckCircle, Clock, TrendingUp, Users, BarChart3, FileText, Search, Target, AlertTriangle, Cloud } from "lucide-react"
 import Image from "next/image"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import {
@@ -164,9 +164,10 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
-              <h1 className="text-slate-900 leading-tight font-bold text-5xl">
+              <h1 className="text-blue-700 leading-tight font-bold text-7xl">Vox Sense</h1>
+              <p className="text-3xl text-slate-800 font-bold leading-tight">
                 Инсайты из данных звонков за часы, а не недели
-              </h1>
+              </p>
               <p className="text-lg text-slate-600 leading-relaxed">
                 Быстро анализируйте накопленные звонки и переписки с помощью LLM. Получайте частотность, графики и
                 выводы без новых интервью.
@@ -222,6 +223,13 @@ export default function LandingPage() {
                 <div className="flex items-start space-x-3">
                   <FileText className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
                   <p className="text-slate-700">Выводит результаты с частотностью, визуализациями и рекомендациями</p>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <Cloud className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+                  <p className="text-slate-700">
+                    Возможны On-prem и Cloud варианты установки. В случае On-prem установки используются локальные LLM,
+                    данные остаются в контуре компании.
+                  </p>
                 </div>
               </div>
             </div>
@@ -280,6 +288,11 @@ export default function LandingPage() {
               </CardContent>
             </Card>
           </div>
+          <p className="text-center text-xl text-slate-600 max-w-4xl mx-auto mt-16 leading-relaxed">
+            AI-ассистент оптимален для маркетологов, продакт-менеджеров, аналитиков и исследователей средних и крупных
+            B2C/B2B компаний, у которых есть контакт-центр и регулярно проводятся клиентские исследования. Особенно
+            полезен тем, кто хочет ускорить работу с инсайтами и сократить затраты на маркетинговую аналитику.
+          </p>
         </div>
       </section>
 
